@@ -43,10 +43,13 @@ Note: If you setup your mysql connection correctly in the application.yml the da
 
 - If you login as ADMIN role you can also check `/users/all` for the users.
 
-#### Availabe users:
+#### Run following SQL insert statements:
 
-|Username|Password|Role|
-|---|---|---|
-|admin|admin|ADMIN|
-|simple-user|rally|USER|
+```
+INSERT INTO car_rental_db.users (`username`, `password`, `role`)
+values('admin', '$2a$10$WdxRPDOQqWaG6adrznaCH.G6jEFsHAjZx3s3CWih1ntwTXKV9dz/6', 'ADMIN');
+```
+
+Now you can request access token with username:`admin` password:`admin`
+
 
