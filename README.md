@@ -25,15 +25,11 @@ There are two different roles:
 
 - Get JWT token for authentication
 
-#### Setup:
+#### Run Spring Boot application:
 
-- Download this repository.
+`mvn spring-boot:run`
 
-- Open the project in an IDE (Intellij, Eclipse...)
-
-- Create a MySQL connection on port:3306 and set the car_rental_directory database with SQLinit script.
-
-- Run the application.
+Note: If you setup your mysql connection correctly in the application.yml the database will be automatically generated.
 
 #### Usage:
 
