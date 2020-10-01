@@ -2,27 +2,30 @@ package com.maba.carrentalserver.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="client")
+@Table( name="client",
+        uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+        })
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="CLIENTID")
     private int clientId;
 
-    @Column(name="CLIENTNAME")
+    @NotBlank
     private String clientName;
 
-    @Column(name="EMAIL")
     @Email
+    @NotBlank
     private String email;
 
-    @Column(name="ADDRESS")
+    @NotBlank
     private String address;
 
-    @Column(name="PHONE")
+    @NotBlank
     private String phone;
 
     public int getClientId() {

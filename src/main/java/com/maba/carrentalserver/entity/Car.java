@@ -11,38 +11,33 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name="car")
+@Table( name="car",
+        uniqueConstraints = {
+        @UniqueConstraint(columnNames = "carPlate")
+        })
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="CARID")
     private int carId;
 
     @NotEmpty
-    @Column(name = "CARPLATE", unique = true)
     private String carPlate;
 
     @NotEmpty
-    @Column(name = "BRAND")
     private String brand;
 
     @NotEmpty
-    @Column(name = "CARTYPE")
     private String carType;
 
     @NotNull
     @Min(2000)
-    @Column(name = "VINTAGE")
     private int vintage;
 
-    @Column(name = "DAILYFEE")
     private int dailyFee;
 
-    @Column(name = "LASTSERVICEDATE")
     private LocalDate lastServiceDate;
 
-    @Column(name = "ISINSERVICE")
     private boolean isInService;
 
 //    @Column(name = "PHOTO")

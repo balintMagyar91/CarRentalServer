@@ -1,30 +1,31 @@
 package com.maba.carrentalserver.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="rent")
+@Table( name="rent")
 public class Rent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="RENTID")
     private long rentId;
 
-    @Column(name="CARID")
-    private int carId;
+    @ManyToOne
+    @JoinColumn(name = "carId")
+    private Car carId;
 
-    @Column(name="CLIENTID")
-    private int clientId;
+    @ManyToOne
+    @JoinColumn(name = "clientId")
+    private Client clientId;
 
-    @Column(name="STARTDATE")
+    @NotBlank
     private LocalDate startDate;
 
-    @Column(name="PLANNEDENDDATE")
+    @NotBlank
     private LocalDate plannedEndDate;
 
-    @Column(name="ENDDATE")
     private LocalDate endDate;
 
     public long getRentId() {
@@ -35,19 +36,19 @@ public class Rent {
         this.rentId = rentId;
     }
 
-    public int getCarId() {
+    public Car getCarId() {
         return carId;
     }
 
-    public void setCarId(int carId) {
+    public void setCarId(Car carId) {
         this.carId = carId;
     }
 
-    public int getClientId() {
+    public Client getClientId() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
+    public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
 

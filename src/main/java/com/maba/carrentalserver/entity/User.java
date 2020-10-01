@@ -1,23 +1,26 @@
 package com.maba.carrentalserver.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="users")
+@Table( name="users",
+        uniqueConstraints = {
+            @UniqueConstraint(columnNames = "username")
+        })
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private long id;
 
-    @Column(name="username")
+    @NotBlank
     private String username;
 
-    @Column(name="password")
+    @NotBlank
     private String password;
 
-    @Column(name="role")
+    @NotBlank
     private String role;
 
     public long getId() {
