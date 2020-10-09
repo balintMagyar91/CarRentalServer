@@ -17,6 +17,7 @@ import javax.validation.Valid;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class CarRentalRestController {
@@ -138,5 +139,10 @@ public class CarRentalRestController {
 //        sb.append("Password: " + user.getPassword() + "\n");
 //        sb.append("Username: " + user.getAuthorities() + "\n");
         return "You can access the api\n" + user.toString();
+    }
+
+    @GetMapping("/profile")
+    public User getProfile(OAuth2Authentication authentication) {
+        return (User) authentication.getUserAuthentication().getPrincipal();
     }
 }
